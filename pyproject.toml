@@ -1,0 +1,16 @@
+
+
+
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mahou-libs"
+version = "0.1.0"
+description = "Simple utilities shared across Mahou projects"
+requires-python = ">=3.10"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["mahou_libs*"]
