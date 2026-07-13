@@ -1,24 +1,16 @@
+from .arithmetics import *
+from .basics import *
 from functools import wraps
 
 def check_args(function):
-    @wraps
+    @wraps(function)
     def wrapper(*args):
         if not args:
             raise ValueError("median requires at least one value")
-        else:
-            function(*args)
+       
+        return function(*args)
     
     return wrapper
-
-
-#region BASICS
-
-def is_even(number):
-    even = ((number % 2) == 0)
-    return True if even else False
-
-
-#region STATISTIC
 
 @check_args
 def mean(*args: int| float) -> float:
@@ -62,16 +54,6 @@ def mode(*args):
 
 
 
-
-
-
-
-
-
-
-
-
-
 @check_args
 def mean_deviation(*args: int | float) -> float:
     args_mean = mean(*args)
@@ -93,36 +75,3 @@ def standard_deviation(*args):
     variancy = squared_deviations / len(args)
 
     return sqrt(variancy)
-#endregion
-#region ARITHMETICS
-
-def sqrt(number: int | float) -> float:
-    return number ** (1/2)
-
-def power(number, exponent):
-    return number**exponent
-
-def squared(number):
-    return number**2
-
-def tetration(a, b):
-    result = 1
-    for _ in range(b):
-        result = a ** result
-
-    return result
-
-def pentation(a, b):
-    result = 1
-    for _ in range(b):
-        result = tetration(a, result)
-
-    return result
-
-def hexation(a, b):
-    result = 1
-    for _ in range(b):
-        result = pentation(a, result)
-
-    return result
-#endregion
