@@ -1,3 +1,5 @@
 from .bocca_main import BoccaDellaVerita
 
-master_log = BoccaDellaVerita()
+if not BoccaDellaVerita.master_exists:
+    _master_log = BoccaDellaVerita()
+

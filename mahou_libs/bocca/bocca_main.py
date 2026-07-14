@@ -4,6 +4,8 @@ from ..colors import painted_string, COLORS
 from typing import Any
 
 
+
+
 class BoccaFiglia:
     def __new__(cls, name: str, color: str | COLORS = "#FAFAFA") -> Self:
         if BoccaDellaVerita.master_exists:
@@ -39,9 +41,13 @@ class BoccaDellaVerita:
 
     def configure(self):
         logging.basicConfig(
-        level = logging.DEBUG, 
+        level = self.TRACE, 
         format = "%(levelname)-5s |  %(message)-30s -> CAST BY: \033[96m%(name)s\033[0m"
         )
+
+    def set_root_level(self, level):
+        root_log = logging.getLogger()
+        root_log.setLevel(level)
 
 
     def set_default_levels(self):
