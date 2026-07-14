@@ -1,7 +1,7 @@
 import logging
 from typing_extensions import Self
 from ..colors import painted_string, COLORS
-
+from typing import Any
 
 
 class BoccaFiglia:
@@ -14,6 +14,9 @@ class BoccaFiglia:
 
     def __init__(self, name: str, color: str | COLORS = "#FAFAFA"):
         self.logger = logging.getLogger(painted_string(name, color))
+
+    def __getattr__(self, attr_name) -> Any:
+        return getattr(self.logger, attr_name)
 
     def add_local_level(self, level_name: str, level_priority: int):
         return add_level(self, level_name, level_priority)
